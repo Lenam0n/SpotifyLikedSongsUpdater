@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "ts-node ./src/index.ts",
+    "build": "tsc",
+    "manage-old-songs": "node dist/utils/manageSongs.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "spotify-web-api-node": "^5.0.2",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/node": "^22.10.7",
+    "@types/spotify-web-api-node": "^5.0.11",
+    "typescript": "^5.7.3"
+  },
+  "name": "spotifylikedsongsupdater",
+  "author": "Lenam0n"
+}

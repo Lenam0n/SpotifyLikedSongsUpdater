@@ -1,0 +1,5 @@
+{
+  "triggerWeekly": true,
+  "playlistPrefix": "Liked Songs",
+  "songAgeThresholdMonths": 6
+}
