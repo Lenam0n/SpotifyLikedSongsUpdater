@@ -1,4 +1,4 @@
-# 🎵 Spotify Liked Songs Automator 🎵
+# 🎵 Spotify Liked Songs Updater 🎵
 
 Ein **automatisiertes TypeScript-Skript**, das regelmäßig deine **Spotify Liked Songs verwaltet**:
 - **Alte Songs (älter als X Monate) in Monats-Playlists verschiebt**
@@ -9,12 +9,38 @@ Ein **automatisiertes TypeScript-Skript**, das regelmäßig deine **Spotify Like
 
 ---
 
+## **📌 Projektstruktur**
+
+```plaintext
+.
+├── src/
+│   ├── index.ts                     # Haupt-Skript für wöchentliche Analyse
+│   ├── utils/
+│   │   ├── spotifyApi.ts             # Verbindung zur Spotify API
+│   │   ├── playlistUtils.ts          # Playlist-Management Funktionen
+│   │   ├── config.ts                 # Laden von Config-Dateien
+│   │   ├── logger.ts                 # Log-Funktionalität
+│   │   ├── logChecker.ts             # Prüft den letzten Run & Fehlerstatus
+│   │   ├── manageSongs.ts            # Separates Skript für `manageOldLikedSongs`
+│   │   ├── globalVariables.ts        # Monatsnamen & Log-Verzeichnis
+├── logs/                             # Gespeicherte Log-Dateien
+├── app-config.json                # Konfigurationseinstellungen
+├── .env                              # Spotify API Credentials
+├── .github/workflows/                 # GitHub Actions Automatisierung
+│   ├── weekly-spotify-automation.yml
+├── package.json                       # Abhängigkeiten & npm Scripts
+├── Dockerfile                         # Docker-Konfiguration
+├── README.md                          # Diese Dokumentation
+```
+
+---
+
 ## **📌 Installation**
 ### **1️⃣ Projekt klonen**
 
 ```sh
-git clone https://github.com/dein-repo/spotify-liked-songs-automator.git
-cd spotify-liked-songs-automator
+git clone https://github.com/Lenam0n/SpotifyLikedSongsUpdater.git
+cd SpotifyLikedSongsUpdater
 ```
 
 ### **2️⃣ Abhängigkeiten installieren**
@@ -34,8 +60,8 @@ SPOTIFY_REFRESH_TOKEN=dein_refresh_token
 
 > Diese Daten bekommst du im Spotify Developer Dashboard.
 
-### **4️⃣ ts-app-config.json konfigurieren**
-> Erstelle oder bearbeite die Datei ts-app-config.json für individuelle Einstellungen:
+### **4️⃣ app-config.json konfigurieren**
+> Erstelle oder bearbeite die Datei app-config.json für individuelle Einstellungen:
 
 ```json
 {
@@ -50,6 +76,8 @@ SPOTIFY_REFRESH_TOKEN=dein_refresh_token
 - **triggerWeekly**: true → Wöchentlicher automatischer Run aktivieren
 - **playlistPrefix**: "Liked Songs" → Präfix für erstellte Playlists
 - **songAgeThresholdMonths**: 6 → Songs, die älter als 6 Monate sind, werden archiviert
+
+---
 
 ## **📌 Nutzung**
 ### **1️⃣ Manuell manageOldLikedSongs ausführen**
@@ -68,6 +96,8 @@ npm run start
 
 👉 Prüft, ob ein neuer Run nötig ist und erstellt eine Playlist für ältere Likes.
 
+---
+
 ## **📌 Docker Nutzung**
 > Falls du das Skript mit Docker ausführen möchtest:
 
@@ -83,8 +113,12 @@ docker build -t spotify-automation .
 docker run --env-file .env spotify-automation
 ```
 
+---
+
 ## **📌 GitHub Actions Integration**
 > Das Skript kann automatisch jede Woche über GitHub Actions laufen.
+
+---
 
 ```bash
 📂 .github/workflows/weekly-spotify-automation.yml
@@ -134,6 +168,8 @@ jobs:
 - Verwendet GitHub Secrets für Spotify-API-Daten
 - Speichert die Logs als Artefakt in GitHub
 
+---
+
 ## **📌 Logs & Fehleranalyse**
 > Jeder wöchentliche Lauf wird in einer Log-Datei gespeichert: 📂 logs/weekly-log_Tag_Monat_Jahr.json
 
@@ -163,6 +199,7 @@ jobs:
 }
 
 ```
+
 ### **Erklärung:**
 
 - **executedAt** → Wann der Run gestartet wurde
@@ -180,34 +217,4 @@ ls logs/
 cat logs/weekly-log_22_Januar_2025.json
 ```
 
-## **📌 Projektstruktur**
-
-```plaintext
-.
-├── src/
-│   ├── index.ts                     # Haupt-Skript für wöchentliche Analyse
-│   ├── utils/
-│   │   ├── spotifyApi.ts             # Verbindung zur Spotify API
-│   │   ├── playlistUtils.ts          # Playlist-Management Funktionen
-│   │   ├── config.ts                 # Laden von Config-Dateien
-│   │   ├── logger.ts                 # Log-Funktionalität
-│   │   ├── logChecker.ts             # Prüft den letzten Run & Fehlerstatus
-│   │   ├── manageSongs.ts            # Separates Skript für `manageOldLikedSongs`
-│   │   ├── globalVariables.ts        # Deutsche Monatsnamen & Log-Verzeichnis
-├── logs/                             # Gespeicherte Log-Dateien
-├── ts-app-config.json                # Konfigurationseinstellungen
-├── .env                              # Spotify API Credentials (nicht pushen!)
-├── .github/workflows/                 # GitHub Actions Automatisierung
-│   ├── weekly-spotify-automation.yml
-├── package.json                       # Abhängigkeiten & npm Scripts
-├── Dockerfile                         # Docker-Konfiguration
-├── README.md                          # Diese Dokumentation
-```
-
 ---
-
-### **✅ Was ist enthalten?**
-✅ **Detaillierte Installation & Nutzung**  
-✅ **Erklärung der Logs & Fehleranalyse**  
-✅ **Docker- und GitHub Actions-Unterstützung**  
-✅ **Projektstruktur für Entwickler**  
