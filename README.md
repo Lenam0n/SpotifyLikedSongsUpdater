@@ -47,9 +47,9 @@ SPOTIFY_REFRESH_TOKEN=dein_refresh_token
 
 #### **Erklärung:**
 
-triggerWeekly: true → Wöchentlicher automatischer Run aktivieren
-playlistPrefix: "Liked Songs" → Präfix für erstellte Playlists
-songAgeThresholdMonths: 6 → Songs, die älter als 6 Monate sind, werden archiviert
+- triggerWeekly: true → Wöchentlicher automatischer Run aktivieren
+- playlistPrefix: "Liked Songs" → Präfix für erstellte Playlists
+- songAgeThresholdMonths: 6 → Songs, die älter als 6 Monate sind, werden archiviert
 
 ## **📌 Nutzung**
 ### **1️⃣ Manuell manageOldLikedSongs ausführen**
