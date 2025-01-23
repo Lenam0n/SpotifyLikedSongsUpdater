@@ -11,6 +11,7 @@ Ein **automatisiertes TypeScript-Skript**, das regelmäßig deine **Spotify Like
 
 ## **📌 Installation**
 ### **1️⃣ Projekt klonen**
+
 ```sh
 git clone https://github.com/dein-repo/spotify-liked-songs-automator.git
 cd spotify-liked-songs-automator
@@ -21,8 +22,9 @@ cd spotify-liked-songs-automator
 ```sh
 npm install
 ```
+
 ### **3️⃣ .env Datei erstellen**
-Erstelle eine .env Datei und füge deine Spotify API Credentials ein:
+> Erstelle eine .env Datei und füge deine Spotify API Credentials ein:
 
 ```env
 SPOTIFY_CLIENT_ID=dein_client_id
@@ -33,7 +35,7 @@ SPOTIFY_REFRESH_TOKEN=dein_refresh_token
 > Diese Daten bekommst du im Spotify Developer Dashboard.
 
 ### **4️⃣ ts-app-config.json konfigurieren**
-Erstelle oder bearbeite die Datei ts-app-config.json für individuelle Einstellungen:
+> Erstelle oder bearbeite die Datei ts-app-config.json für individuelle Einstellungen:
 
 ```json
 {
@@ -49,7 +51,7 @@ triggerWeekly: true → Wöchentlicher automatischer Run aktivieren
 playlistPrefix: "Liked Songs" → Präfix für erstellte Playlists
 songAgeThresholdMonths: 6 → Songs, die älter als 6 Monate sind, werden archiviert
 
-## **📌 Nutzung **
+## **📌 Nutzung**
 ### **1️⃣ Manuell manageOldLikedSongs ausführen**
 
 ```sh
@@ -67,7 +69,7 @@ npm run start
 👉 Prüft, ob ein neuer Run nötig ist und erstellt eine Playlist für ältere Likes.
 
 ## **📌 Docker Nutzung**
-Falls du das Skript mit Docker ausführen möchtest:
+> Falls du das Skript mit Docker ausführen möchtest:
 
 ### **1️⃣ Image bauen**
 
@@ -82,7 +84,7 @@ docker run --env-file .env spotify-automation
 ```
 
 ## **📌 GitHub Actions Integration**
-Das Skript kann automatisch jede Woche über GitHub Actions laufen.
+> Das Skript kann automatisch jede Woche über GitHub Actions laufen.
 
 ```bash
 📂 .github/workflows/weekly-spotify-automation.yml
@@ -128,12 +130,12 @@ jobs:
 ```
 
 ### **🔹 Automatisierung**
+- Läuft jeden Sonntag um Mitternacht
+- Verwendet GitHub Secrets für Spotify-API-Daten
+- Speichert die Logs als Artefakt in GitHub
 
-Läuft jeden Sonntag um Mitternacht
-Verwendet GitHub Secrets für Spotify-API-Daten
-Speichert die Logs als Artefakt in GitHub
 ## **📌 Logs & Fehleranalyse**
-Jeder wöchentliche Lauf wird in einer Log-Datei gespeichert: 📂 logs/weekly-log_Tag_Monat_Jahr.json
+> Jeder wöchentliche Lauf wird in einer Log-Datei gespeichert: 📂 logs/weekly-log_Tag_Monat_Jahr.json
 
 ### **📌 Beispiel für logs/weekly-log_22_Januar_2025.json**
 
@@ -163,11 +165,11 @@ Jeder wöchentliche Lauf wird in einer Log-Datei gespeichert: 📂 logs/weekly-l
 ```
 ### **Erklärung:**
 
-executedAt → Wann der Run gestartet wurde
-finishedAt → Wann er beendet wurde
-songsProcessed → Alle bearbeiteten Songs mit Status
-movedToPlaylist: false → Song konnte nicht verschoben werden
-removedFromLikedSongs: true → Song wurde erfolgreich entfernt
+- **executedAt** → Wann der Run gestartet wurde
+- **finishedAt** → Wann er beendet wurde
+- **songsProcessed** → Alle bearbeiteten Songs mit Status
+- **movedToPlaylist**: false → Song konnte nicht verschoben werden
+- **removedFromLikedSongs**: true → Song wurde erfolgreich entfernt
 
 ---
 
